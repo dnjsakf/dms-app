@@ -1,0 +1,22 @@
+{
+  "name": "dms-app",
+  "version": "0.1.0",
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "local": "concurrently \"npm run server:local\" \"npm run client:local\"",
+    "server:local": "npm run local --prefix server",
+    "client:local": "npm run local --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "server",
+    "client",
+    "batch"
+  ]
+}
