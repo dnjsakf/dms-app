@@ -16,7 +16,6 @@
   },
   "workspaces": [
     "server",
-    "client",
-    "batch"
+    "client"
   ]
 }
