@@ -5,8 +5,8 @@ git rm --cached server
 git rm --cached client
 
 # Add Submodules
-git submodule add https://dnjsakf.synology.me:18443/dnjsakf/dms-server.git server
-git submodule add https://dnjsakf.synology.me:18443/dnjsakf/dms-client.git client
+git submodule add https://github.com/dnjsakf/dms-server.git server
+git submodule add https://github.com/dnjsakf/dms-client.git client
 
 # Upadte Submodules
 git submodule init
