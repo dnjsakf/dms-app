@@ -1,0 +1,90 @@
+##############################################
+# 메뉴 접근 권한 처리
+##############################################
+# 1. Client에서 메뉴를 이동할 때마다 서버로 인증 요청?
+# 2. Token에 인증 정보를 담아서 Client 인증 한다.
+##############################################
+
+
+1. 프리셋 기능
+  - 로그인 해당 페이지로 이동 후 직업 선택 
+  - 룬 셋팅 후 저장(프리셋 기능) -> 프리셋 관련 테이블 필요
+  - 관련 테이블:
+    - 프리셋 마스터: DMS_MB_PRESET_MST
+      - PK: 사용자 ID, 프리셋 ID
+
+2. 룬 목록
+  - 직업, 부위, 등급별 필터링 가능
+    - 
+
+3. 직업별 추천 룬
+  - 관리화면에서 직업별 추천룬 등록
+
+4. 공통코드
+  - 캐릭터_클래스_코드: CHAR_CLASS
+  - 룬_부위_코드: RUNE_PART
+  - 룬_레어도_코드: RUNE_RARITY
+  - 
+
+테이블 정리
+=============================================
+  - 룬 마스터: dms_mb_rune_mst
+    - 룬에 대한 정보를 관리하는 테이블
+    - 컬럼
+      - rune_id, rune_nm, rune_rarity, rune_desc, rune_slot, class_id, class_nm, note, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+
+      - rune_id, rune_nm, rune_desc, rarity_id, part_id, class_id, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+    - PK
+      - rune_id
+    - FK
+      - rarity_id, part_id, class_id
+=============================================
+  - 사용자 프리셋 마스터: dms_mb_user_preset_mst
+    - 사용자별 프리셋 관리 테이블
+      - 사용자가 프리셋을 저장 할 때, 해당 테이블에 데이터를 추가/삭제/수정
+    - 컬럼
+      - preset_id, user_id, preset_nm, use_yn, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+    - PK
+      - preset_id, user_id
+    - FK
+      - user_id
+=============================================
+  - 사용자 프리셋 파츠: dms_mb_user_preset_part
+    - 사용자별 프리셋에 설정된 파츠를 관리하는 테이블
+    - 컬럼
+      - preset_id, user_id, part_id, rune_id, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+    - PK
+      - preset_id, user_id, part_id
+    - FK   
+      - user_id, part_id, rune_id
+
+
+
+=============================================
+  - 캐릭터 클래스 마스터: dms_mb_char_class_mst
+    - 캐릭터 클래스 정보를 관리하는 테이블
+    - 컬럼
+      - class_id, class_nm, class_desc, use_yn, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+    - PK
+      - class_id
+=============================================
+  - 장비 부위 마스터: dms_mb_equip_part_group_mst
+    - 장비 부위 정보를 관리하는 테이블
+    - 컬럼
+      - part_id, part_nm, part_desc, use_yn, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+    - PK
+      - part_id
+=============================================
+  - 장비 부위 마스터: dms_mb_equip_part_mst
+    - 장비 부위 정보를 관리하는 테이블
+    - 컬럼
+      - part_id, part_nm, part_desc, use_yn, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+    - PK
+      - part_id
+=============================================
+  - 룬 레어도 마스터: dms_mb_rune_rairty_mst
+    - 룬에 대한 레어도 정보를 관리하는 테이블
+    - 컬럼
+      - rarity_id, rarity_nm, rarity_desc, use_yn, reg_user_id, reg_dttm, upd_user_id, upd_dttm
+    - PK
+      - rarity_id
