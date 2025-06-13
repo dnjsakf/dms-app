@@ -24,4 +24,11 @@ git submodule update
 git submoudle foreach git checkout dev
 ```
 
+### Git Submodules Push
+```shell
+git submodule foreach git add .
+git submodule foreach git commit -m "Message"
+git submoudle foreach git push origin
+```
+
 ### Install Lerna
